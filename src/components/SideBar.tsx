@@ -1,9 +1,16 @@
 import { Link, useLocation, Location } from 'react-router-dom';
-import { RiDashboardFill, RiShoppingBag3Fill } from 'react-icons/ri';
+import {
+  RiDashboardFill,
+  RiHandCoinFill,
+  RiShoppingBag3Fill,
+} from 'react-icons/ri';
 import { BsPeopleFill } from 'react-icons/bs';
 import { PiFileTextFill } from 'react-icons/pi';
 import { IconType } from 'react-icons';
-import { FaChartBar } from 'react-icons/fa';
+import { MdOutlineBarChart } from 'react-icons/md';
+import { BiSolidCoupon, BiSolidPieChart } from 'react-icons/bi';
+import { AiOutlineAreaChart } from 'react-icons/ai';
+import { GiStopwatch } from 'react-icons/gi';
 
 const SideBar = () => {
   const location = useLocation();
@@ -11,67 +18,96 @@ const SideBar = () => {
   return (
     <aside>
       <h2>Logo .</h2>
-      <div>
-        <h5>Dashboard</h5>
-        <ul>
-          <Li
-            url="/admin/dashboard"
-            text="Dashboard"
-            location={location}
-            Icon={RiDashboardFill}
-          />
-          <Li
-            url="/admin/products"
-            text="Product"
-            location={location}
-            Icon={RiShoppingBag3Fill}
-          />
-          <Li
-            url="/admin/customer"
-            text="Customer"
-            location={location}
-            Icon={BsPeopleFill}
-          />
-          <Li
-            url="/admin/transaction"
-            text="Transaction"
-            location={location}
-            Icon={PiFileTextFill}
-          />
-        </ul>
-      </div>
-      <div>
-        <h5>Charts</h5>
-        <ul>
-          <Li
-            url="/admin/chart/bar"
-            text="Bar"
-            location={location}
-            Icon={FaChartBar}
-          />
-          <Li
-            url="/admin/products"
-            text="Product"
-            location={location}
-            Icon={RiShoppingBag3Fill}
-          />
-          <Li
-            url="/admin/customer"
-            text="Customer"
-            location={location}
-            Icon={BsPeopleFill}
-          />
-          <Li
-            url="/admin/transaction"
-            text="Transaction"
-            location={location}
-            Icon={PiFileTextFill}
-          />
-        </ul>
-      </div>
+      <DashBoard location={location} />
+      <Charts location={location} />
+      <Apps location={location} />
     </aside>
   );
 };
+
+const DashBoard = ({ location }: { location: Location }) => (
+  <div>
+    <h5>Dashboard</h5>
+    <ul>
+      <Li
+        url="/admin/dashboard"
+        text="Dashboard"
+        location={location}
+        Icon={RiDashboardFill}
+      />
+      <Li
+        url="/admin/products"
+        text="Product"
+        location={location}
+        Icon={RiShoppingBag3Fill}
+      />
+      <Li
+        url="/admin/customer"
+        text="Customer"
+        location={location}
+        Icon={BsPeopleFill}
+      />
+      <Li
+        url="/admin/transaction"
+        text="Transaction"
+        location={location}
+        Icon={PiFileTextFill}
+      />
+    </ul>
+  </div>
+);
+
+const Charts = ({ location }: { location: Location }) => (
+  <div>
+    <h5>Charts</h5>
+    <ul>
+      <Li
+        url="/admin/chart/bar"
+        text="Bar"
+        location={location}
+        Icon={MdOutlineBarChart}
+      />
+      <Li
+        url="/admin/chart/pie"
+        text="Pie"
+        location={location}
+        Icon={BiSolidPieChart}
+      />
+      <Li
+        url="/admin/chart/line"
+        text="Line"
+        location={location}
+        Icon={AiOutlineAreaChart}
+      />
+    </ul>
+  </div>
+);
+
+const Apps = ({ location }: { location: Location }) => (
+  <div>
+    <h5>Apps</h5>
+    <ul>
+      <Li
+        url="/admin/app/stopwatch"
+        text="Stopwatch"
+        location={location}
+        Icon={GiStopwatch}
+      />
+      <Li
+        url="/admin/app/coupon"
+        text="Coupon"
+        location={location}
+        Icon={BiSolidCoupon}
+      />
+      <Li
+        url="/admin/app/toss"
+        text="Toss"
+        location={location}
+        Icon={RiHandCoinFill}
+      />
+    </ul>
+  </div>
+);
 
 interface LiProps {
   url: string;
